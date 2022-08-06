@@ -1,0 +1,8 @@
+[
+    {
+        "type": "list",
+        "name": "action",
+        "message": "What action do you want to perform?",
+        "choices": ["Discover", "Check specific device"]
+    }
+]

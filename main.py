@@ -11,13 +11,13 @@ SCHEDULES_CONF_PATH = os.path.join(CUR_DIR, "schedules.json")
 DEVICE_IP = "10.0.0.6"
 DEVICE_NAME = "e4bb64"
 CONST_TO_DAYS_MAP = {
-    "Monday" : Days.MONDAY,
-    "Tuesday" : Days.TUESDAY,
-    "Wednesday": Days.WEDNESDAY,
-    "Thursday": Days.THURSDAY,
-    "Friday": Days.FRIDAY,
-    "Saturday": Days.SATURDAY,
-    "Sunday": Days.SUNDAY
+    "MONDAY" : Days.MONDAY,
+    "TUESDAY" : Days.TUESDAY,
+    "WEDNESDAY": Days.WEDNESDAY,
+    "THURSDAY": Days.THURSDAY,
+    "FRIDAY": Days.FRIDAY,
+    "SATURDAY": Days.SATURDAY,
+    "SUNDAY": Days.SUNDAY
 }
 
 async def sleep_until(day: int = 0, hour: int = 0, minute: int = 0, second: int = 0):
@@ -27,8 +27,6 @@ async def sleep_until(day: int = 0, hour: int = 0, minute: int = 0, second: int 
     future = current_time + datetime.timedelta(
         days=day, hours=hour, minutes=minute, seconds=second
     )
-    if current_time.timestamp() > future.timestamp():
-        future += datetime.timedelta(days=1)
     await asyncio.sleep((future - current_time).total_seconds())
 
 
@@ -63,7 +61,7 @@ async def func():
             )
             await swapi.delete_schedule(schedule.schedule_id)
         save_schedule(data_to_save)
-    await sleep_until(second=6)
+    await sleep_until(second=5)
     await restore_schedules()
 
 
